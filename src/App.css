@@ -11,6 +11,6 @@ body {
 
 @layer background {
   .bg-background-pattern {
-    @apply bg-opacity-50 bg-gradient-to-tr from-black to-gray-900 text-white h-screen flex flex-col justify-center items-center;
+    @apply bg-opacity-50 bg-gradient-to-tr from-black to-gray-900 text-white h-screen flex flex-col;
   }
 }
