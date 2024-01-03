@@ -1,5 +1,8 @@
 import { useState } from 'react';
 import { Form } from 'react-router-dom';
+// Biz React-Router Form elemanını kullanmış olsaydık, 
+// Bizim için birçok işlemi otomatik olarak yapacaktı fakat "Best practice" 
+// Kısmını öğrenmek için biz bunu kendimiz yapacağız.
 
 const Login = () => {
   // React formlarında default olarak sayfa yenilenir.
@@ -12,6 +15,10 @@ const Login = () => {
   });
 
   const handleOnChange = (e: any) => {
+    // onSubmit bizden e: React.FormEvent<HTMLFormElement> istiyor.
+    // Ama biz React.FormEvent<HTMLFormElement> verirsek, e.target.name şeklinde
+    // form elemanlarına erişemeyiz direkt olarak, aşağıdaki gibi erişebiliriz 👇🏻
+
     // console.log((e.currentTarget.elements[0] as HTMLInputElement).name) => username
     // console.log((e.currentTarget.elements[1] as HTMLInputElement).name) => password
 
@@ -30,8 +37,7 @@ const Login = () => {
   return (
     <>
       <form
-        className='flex flex-col items-center justify-center h-screen text-black
-         mx-auto w-2/3 md:w-1/2 lg:w-1/3 bg-gradient-to-r from-black to-gray-900 bg-opacity-80 border border-gray-400 rounded-lg shadow-lg shadow-slate-50'
+        className='login-form'
         onSubmit={(e) => {
           e.preventDefault();
           console.log(inputValues);
