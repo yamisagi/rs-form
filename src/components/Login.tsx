@@ -76,6 +76,11 @@ const Login = () => {
           e.preventDefault();
           console.log(inputValues);
           handleOnChange(e);
+          // Formu submit ettikten sonra inputları sıfırlamak için:
+          setInputValues({
+            username: '',
+            password: '',
+          });
         }}
       >
         <div className='flex flex-col items-center justify-center w-50'>

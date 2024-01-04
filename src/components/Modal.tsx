@@ -10,7 +10,10 @@ const Modal = ({ open, message, setOpen }: Props) => {
   return (
     <dialog
       open={open}
-      onClick={(e) => e.target === e.currentTarget && setOpen(false)}
+      onClick={(e) => {
+        e.preventDefault();
+        e.target === e.currentTarget && setOpen(false);
+      }}
       className='bg-black bg-opacity-50 w-screen h-screen items-center justify-center z-0'
     >
       <div
