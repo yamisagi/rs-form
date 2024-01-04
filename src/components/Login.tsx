@@ -1,14 +1,47 @@
 import { useState } from 'react';
 import { Form } from 'react-router-dom';
-// Biz React-Router Form elemanını kullanmış olsaydık, 
-// Bizim için birçok işlemi otomatik olarak yapacaktı fakat "Best practice" 
+import Modal from './Modal';
+// Biz React-Router Form elemanını kullanmış olsaydık,
+// Bizim için birçok işlemi otomatik olarak yapacaktı fakat "Best practice"
 // Kısmını öğrenmek için biz bunu kendimiz yapacağız.
 
 const Login = () => {
+  const [open, setOpen] = useState(false);
   // React formlarında default olarak sayfa yenilenir.
   // Bu yüzden preventDefault() kullanıyoruz.
   // Ve daha efektif bir şekilde yönetmek ve two-way binding yapmak için
   // useState kullanıyoruz.
+
+  //! 2. Yöntem:
+
+  // useRef ile de kullanabiliriz.
+
+  // const username = useRef<HTMLInputElement>(null);
+  // const password = useRef<HTMLInputElement>(null);
+
+  // const handleOnChange = (e: React.FormEvent<HTMLFormElement>) => {
+  //   e.preventDefault();
+  //
+  //   Her ref bir obje döndürür. Bu yüzden null olup olmadığını kontrol etmemiz gerekir.
+  //   if (username.current && password.current) gibi.
+  //   Ardındam ref objesinin current özelliğine erişebiliriz.
+
+  //   const usernameValue = username.current?.value;
+  //   const passwordValue = password.current?.value;
+
+  //   Ve bu şekilde eriştiğimiz veriler ile işlem yapabiliriz.
+  //   Örneğin bir API'ye göndermek gibi.
+  // };
+
+  // Fakat şöyle bir handikapı var, eğer biz useRef ile bir form elemanına erişirsek,
+  // Ve kullandıktan sonra silmek istersek, bunu tek tek yapmamız gerekir.
+
+  // username.current = null;
+  // password.current = null;
+
+  // şeklinde.
+  // Bu da çok tercih edilen bir yöntem değil React tarafında.
+
   const [inputValues, setInputValues] = useState({
     username: '',
     password: '',
@@ -36,6 +69,7 @@ const Login = () => {
   };
   return (
     <>
+      <Modal open={open} message='Form submitted.' setOpen={setOpen} />
       <form
         className='login-form'
         onSubmit={(e) => {
@@ -57,6 +91,7 @@ const Login = () => {
           </label>
           <input
             id='username'
+            // ref={username}
             type='text'
             placeholder='Username'
             name='username'
@@ -73,6 +108,7 @@ const Login = () => {
           </label>
           <input
             type='password'
+            // ref={password}
             id='password'
             placeholder='Password'
             name='password'
@@ -80,7 +116,11 @@ const Login = () => {
             value={inputValues.password}
             className='px-4 py-2 border border-gray-400 rounded-lg mb-4'
           />
-          <button type='submit' className='submit-button'>
+          <button
+            type='submit'
+            className='submit-button'
+            onClick={() => setOpen(true)}
+          >
             Login
           </button>
         </div>
