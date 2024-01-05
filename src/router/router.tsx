@@ -1,6 +1,7 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Login from '../components/Login';
 import App from '../App';
+import ComplexForm from '../components/ComplexForm';
 
 const router = createBrowserRouter([
   {
@@ -10,6 +11,10 @@ const router = createBrowserRouter([
       {
         path: '/login',
         element: <Login />,
+      },
+      {
+        path: '/complex-form',
+        element: <ComplexForm />,
       },
     ],
   },

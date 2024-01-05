@@ -84,7 +84,7 @@ const Login = () => {
         }}
       >
         <div className='flex flex-col items-center justify-center w-50'>
-          <h1 className='text-4xl font-bold text-primary mb-10 text-white'>
+          <h1 className='h1-form'>
             Login
           </h1>
           <label
