@@ -5,9 +5,7 @@ const ComplexForm = () => {
     <>
       <form className='login-form'>
         <div>
-          <h1
-            
-          >Complex Form</h1>
+          <h1 className='h1-form'>Complex Form</h1>
         </div>
       </form>
     </>

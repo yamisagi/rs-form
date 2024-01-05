@@ -1,26 +1,14 @@
 import { Outlet } from 'react-router';
 import './App.css';
 import { Link } from 'react-router-dom';
+import pathList from './constants/links';
 
 const App = () => {
-  const pathList = [
-    {
-      path: '/login',
-      name: 'Login',
-    },
-    {
-      path: '/complex-form',
-      name: 'Complex Form',
-    },
-  ];
   return (
     <div className='bg-background-pattern'>
       <h1 className='text-center text-4xl font-bold text-primary mt-20 mb-10'>
         All examples
       </h1>
-      {/* <Link to='/login' className='link-button'>
-        Login
-      </Link> */}
       <div className='flex gap-5 mb-10 items-center justify-center'>
         {pathList.map((path) => {
           return (
