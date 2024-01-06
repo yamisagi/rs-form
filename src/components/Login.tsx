@@ -84,14 +84,8 @@ const Login = () => {
         }}
       >
         <div className='flex flex-col items-center justify-center w-50'>
-          <h1 className='h1-form'>
-            Login
-          </h1>
-          <label
-            htmlFor='username'
-            className='text-white
-          text-opacity-80 mb-2 font-semibold text-left w-full'
-          >
+          <h1 className='h1-form'>Login</h1>
+          <label htmlFor='username' className='label-form'>
             Username
           </label>
           <input
@@ -102,12 +96,11 @@ const Login = () => {
             name='username'
             onChange={handleOnChange}
             value={inputValues.username}
-            className='px-4 py-2 border border-gray-400 rounded-lg mb-4'
+            className='input-form'
           />
           <label
             htmlFor='password'
-            className='text-white
-          text-opacity-80 mb-2 font-semibold text-left w-full'
+            className='label-form'
           >
             Password
           </label>
@@ -119,7 +112,7 @@ const Login = () => {
             name='password'
             onChange={handleOnChange}
             value={inputValues.password}
-            className='px-4 py-2 border border-gray-400 rounded-lg mb-4'
+            className='input-form'
           />
           <button
             type='submit'
