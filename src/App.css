@@ -41,6 +41,9 @@ body {
   .input-box {
     @apply flex flex-col items-center md:items-start justify-center md:justify-start w-full;
   }
+  .select-box {
+    @apply flex flex-col items-start justify-start border p-5 w-full my-5 rounded-md text-base font-mono;
+  }
 }
 
 @layer utilities {
@@ -71,9 +74,12 @@ body {
     @apply animate-slide-down transition-all duration-500 ease-in-out;
   }
   .fieldset-form {
-    @apply border w-full my-5 rounded-md p-5 text-base font-semibold;
+    @apply border w-full my-5 rounded-md p-5 text-base font-mono;
     @apply bg-gradient-to-l from-white/20 to-gray-900 bg-opacity-30 text-white;
     @apply flex flex-col;
     @apply items-start justify-start;
+  }
+  .select-form {
+    @apply bg-transparent text-white text-opacity-80 border-b-2 border-white border-opacity-50 w-1/3 mt-1;
   }
 }

@@ -74,6 +74,26 @@ const ComplexForm = () => {
             />
           </div>
         </div>
+        <div
+          className='select-box'
+          role='group'
+        >
+          <label
+            htmlFor='role'
+            className='text-left text-white text-base font-mono'
+          >
+            What is your role?
+          </label>
+          <select
+            name='role'
+            id='role'
+            className='select-form'
+          >
+            <option value='student'>Student</option>
+            <option value='teacher'>Teacher</option>
+            <option value='admin'>Admin</option>
+          </select>
+        </div>
         <fieldset className='fieldset-form'>
           <legend className='text-left text-base font-mono'>
             How did you find us?
