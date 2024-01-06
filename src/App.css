@@ -71,7 +71,7 @@ body {
     @apply animate-slide-down transition-all duration-500 ease-in-out;
   }
   .fieldset-form {
-    @apply border w-full my-5 rounded-md p-5 text-base font-medium;
+    @apply border w-full my-5 rounded-md p-5 text-base font-semibold;
     @apply bg-gradient-to-l from-white/20 to-gray-900 bg-opacity-30 text-white;
     @apply flex flex-col;
     @apply items-start justify-start;

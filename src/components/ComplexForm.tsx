@@ -78,7 +78,7 @@ const ComplexForm = () => {
           <legend className='text-left text-base font-mono'>
             How did you find us?
           </legend>
-          <div className=''>
+          <div className='font-extralight'>
             <input
               type='checkbox'
               id='google'
@@ -90,7 +90,7 @@ const ComplexForm = () => {
             </label>
           </div>
 
-          <div className='control'>
+          <div className='font-extralight'>
             <input
               type='checkbox'
               id='friend'
@@ -102,7 +102,7 @@ const ComplexForm = () => {
             </label>
           </div>
 
-          <div className='control'>
+          <div className='font-extralight'>
             <input
               type='checkbox'
               id='other'
