@@ -28,10 +28,18 @@ body {
     @apply text-xl text-white mb-10;
   }
   .label-form {
-    @apply text-white text-opacity-80 mb-2 font-semibold text-left w-full;
+    @apply text-white text-opacity-80 mb-2 font-semibold text-center md:text-left w-full;
   }
   .input-form {
     @apply px-4 py-2 border border-gray-400 rounded-lg mb-4;
+  }
+}
+@layer components {
+  .grid-form {
+    @apply grid grid-cols-1 md:grid-cols-2 gap-5 w-full;
+  }
+  .input-box {
+    @apply flex flex-col items-center md:items-start justify-center md:justify-start w-full;
   }
 }
 
@@ -46,6 +54,10 @@ body {
     transition duration-300 ease-in-out bg-opacity-80            
     hover:bg-gradient-to-r hover:from-gray-900 hover:to-black;
   }
+  .reset-button {
+    @apply font-bold place-self-center text-white opacity-50 text-lg;
+    @apply hover:opacity-100;
+  }
   .login-form {
     @apply flex flex-col items-center justify-center text-black
     mx-auto w-3/4 md:w-2/3 bg-gradient-to-r from-black to-gray-900 bg-opacity-80 border border-gray-400 rounded-lg shadow-lg shadow-slate-50 px-1 py-10 mb-10;
@@ -57,5 +69,11 @@ body {
 
     @apply transition-all duration-500 ease-in-out;
     @apply animate-slide-down transition-all duration-500 ease-in-out;
+  }
+  .fieldset-form {
+    @apply border w-full my-5 rounded-md p-5 text-base font-medium;
+    @apply bg-gradient-to-l from-white/20 to-gray-900 bg-opacity-30 text-white;
+    @apply flex flex-col;
+    @apply items-start justify-start;
   }
 }
