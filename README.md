@@ -68,6 +68,14 @@ In this project, I built a basic form app with React and TypeScript with the hel
 - [x] Project Setup
 - [x] Implementing RS Build
 - [x] Implementing Tailwind CSS
+- [x] Implementing React Router
+- [x] Create a basic form component
+- [x] Implement form validation
+- [x] Refactor constants
+- [x] Refactor form component
+- [x] Create custom Tailwind CSS classes
+- [x] Create complex form component
+- [x] Implement FormData API
 
 
 
