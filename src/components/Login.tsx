@@ -64,6 +64,8 @@ const Login = () => {
       // Çok amatörce bir validation işlemi, bunun için bir sürü
       // Validation kütüphanesi var. Formik & Yup gibi.
       // Ama biz bunu öğrenmek için yapıyoruz.
+
+      ///! [LoginValidate.tsx] dosyasında daha iyi bir validation işlemi yaptık.
     ) {
       alert('Please fill in the blanks.');
     } else {
