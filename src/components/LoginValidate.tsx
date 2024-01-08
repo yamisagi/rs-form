@@ -19,6 +19,17 @@ const LoginValidate = () => {
   // Fakat bu yöntemde her keypress'te çalıştığı için performans sorunu olabilir.
   // Ve bu yöntemde error mesajı çok erken gözükebilir. Bu da kullanıcıyı rahatsız edebilir.
 
+
+  //! 4. Yöntem
+
+  // HTML5'in kendi validation'ı ile de bu kontrolü yapabiliriz. 
+  // inputlar, optionlar, textarea'lar için required attribute'ü ile ekstra bir kontrol yapmamıza gerek kalmayacaktır. Ve tarayıcı tarafından kontrol edilecektir.
+  // Örneğin, <input type="email" required /> veya <input type="password" required /> gibi.
+  // Ayrıca HTML5'in kendi validation'ı ile minLength attribute'ü ile de kontrol yapabiliriz. Örneğin, <input type="password" minLength={8} /> gibi. 
+  // Ve iki validation'ı da birlikte kombinleyebiliriz. 
+  // Örneğin, iki password input'ı biri password, diğeri confirm password için olduğunu düşünelim. Bu durumda kendi validationumuzu yazmamız gerekir çünkü HTML5'in böyle bir validation'ı yoktur.
+
+
   const validateInput = (identifier: string) => {
     // Her keypress'te çalışacak şekilde bir kontrol için bu şekilde bir fonksiyon oluşturup, RegExp ile kontrol edebiliriz.
 
@@ -62,16 +73,14 @@ const LoginValidate = () => {
 
     // Bu yöntemde submission kısmında bir kontrol yapabiliriz.
     // Yukarıdaki yöntemlerdeki gibi onBlur kullanmadan ref veya state ile submit kısmında validation için if kontrolü ile de yapılabilir, fakat bu yöntemde error message çok geç gözükebilir. Bu da kullanıcıyı rahatsız edebilir.
-    // Örneğin, 
+    // Örneğin,
     // if (inputValues.email === '' || inputValues.password === '') {
     //    Eğer error message için bir state'imiz var ise burda da set edebiliriz.
     //   alert('Please enter a valid email or password.');
     //   return; // Sonraki işlemleri yapmaması için return koyabiliriz.
-    // } 
-    // API'ye işlemleri vs. 
+    // }
+    // API'ye işlemleri vs.
     // Error message için bir state'imiz var ise burda da eski haline döndürebiliriz.
-
-
 
     //* 2. Yöntemin devamı;
 
@@ -81,6 +90,8 @@ const LoginValidate = () => {
     // Burda inputValues kısmını kontrol etmemizin mantıksal sebebi ise,
     // Başlangıçta didFocus.email ve didFocus.password false olarak tanımlı olduğu için, kullanıcı inputa hiçbir şey yazmadan submit ederse, form yine de submit olacaktır.
     // Bu da bizim istemediğimiz bir durumdur.
+    // ----------
+    //! Dipnot olarak 4. Yöntemde bahsettiğim gibi, HTML5'in kendi validation'ı ile de bu kontrolü yapabiliriz. Örneğin, required attribute'ü ile veya minLenght attribute'ü ile.
 
     if (
       inputValues.email !== '' &&
@@ -126,13 +137,14 @@ const LoginValidate = () => {
             </label>
             <input
               id='email'
-              type='text'
+              type='email'
               placeholder='Email'
               name='email'
               onChange={handleOnChange}
               value={inputValues.email}
               className='input-form'
               onBlur={() => validateInput('email')}
+              required
             />
             {didFocus.email && (
               <p className='text-red-500 text-xs italic mb-2'>
@@ -153,6 +165,8 @@ const LoginValidate = () => {
               value={inputValues.password}
               className='input-form'
               onBlur={() => validateInput('password')}
+              required
+              minLength={8} // Regex ile de kontrol edebiliriz.
             />
             {didFocus.password && (
               <p className='text-red-500 text-xs italic mb-2'>
