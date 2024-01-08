@@ -83,6 +83,11 @@ In this project, I built a Form app with best practices for form validation & fo
 - [x] Create Custom Hook for form validation in [useInput](/src/hooks/useInput.ts)
 - [x] Explain [LoginValidate](/src/components/LoginValidate.tsx) walkthrough with comments
 - [x] Implement [useInput](/src/hooks/useInput.ts) hook in [ComplexForm](/src/components/ComplexForm.tsx) component and explain it with comments
+- [x] Finish the project 🎉
+- [x] Deploy the project on Vercel 🚀
+
+
+<br/>
 
 - [x] *Additionally, 3rd party libraries are at least I know;*
   - [x] [React Hook Form](https://react-hook-form.com/)
