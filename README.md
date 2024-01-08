@@ -6,7 +6,7 @@
   <h2 align="center">RS Form App</h2>
 
   <p align="center">
-    A basic form app built with React and TypeScript with the help of RS Build.
+    A Form app with best practices for form validation & form handling including basic form validation, complex form validation, form handling with FormData API, custom hooks also with comments.
   </p>
 
   <p>
@@ -59,7 +59,7 @@
 <!-- add asset here later -->
 
 
-In this project, I built a basic form app with React and TypeScript with the help of RS Build. I used the RS Build instead of Webpack to make the project more poweful with the help of RS Build's features. For more information about RS Build, you can check the [RS Build](https://rsbuild.dev/guide/start/quick-start.html) documentation.
+In this project, I built a Form app with best practices for form validation & form handling including basic form validation, complex form validation, form handling with FormData API, custom hooks also with comments. Used React and TypeScript with the help of RS Build. I used the RS Build instead of Webpack to make the project more poweful with the help of RS Build's features. For more information about RS Build, you can check the [RS Build](https://rsbuild.dev/guide/start/quick-start.html) documentation.
 
 <!-- ROADMAP -->
 
@@ -69,18 +69,34 @@ In this project, I built a basic form app with React and TypeScript with the hel
 - [x] Implementing RS Build
 - [x] Implementing Tailwind CSS
 - [x] Implementing React Router
-- [x] Create a basic form component
-- [x] Implement form validation
-- [x] Refactor constants
+- [x] Create a basic [Login](/src/components/Login.tsx) component
+- [x] Implement form validation and explain it with comments
+- [x] Refactor constants in [constants.ts](/src/constants/links.ts)
 - [x] Refactor form component
 - [x] Create custom Tailwind CSS classes
-- [x] Create complex form component
-- [x] Implement FormData API
+- [x] Create [ComplexForm](/src/components/ComplexForm.tsx) component
+- [x] Implement form validation in [ComplexForm](/src/components/ComplexForm.tsx) component
+- [x] Implement FormData API in [ComplexForm](/src/components/ComplexForm.tsx) component
+- [x] Explain [ComplexForm](/src/components/ComplexForm.tsx) walkthrough with comments
+- [x] Create [LoginValidate](/src/components/LoginValidate.tsx) component
+- [x] Implement 4 different validation methods in [LoginValidate](/src/components/LoginValidate.tsx) component
+- [x] Create Custom Hook for form validation in [useInput](/src/hooks/useInput.ts)
+- [x] Explain [LoginValidate](/src/components/LoginValidate.tsx) walkthrough with comments
+- [x] Implement [useInput](/src/hooks/useInput.ts) hook in [ComplexForm](/src/components/ComplexForm.tsx) component and explain it with comments
+
+- [x] *Additionally, 3rd party libraries are at least I know;*
+  - [x] [React Hook Form](https://react-hook-form.com/)
+  - [x] [Formik](https://formik.org/)
+  - [x] [Yup](https://github.com/jquense/yup)
+  - [x] [Uniforms](https://uniforms.tools/)
+  - [x] [KendoReact](https://www.telerik.com/kendo-react-ui/form)
+  - [x] [Formsy React](https://github.com/formsy/formsy-react?tab=readme-ov-file)
+  - [x] [React Final Form](https://final-form.org/react)
+  - [x] [HouseForm](https://houseform.dev/)
+  - [x] [React Reactive Form](https://github.com/bietkul/react-reactive-form)
 
 
 
-
-<p align="center">(Still working on it...)</p>
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 

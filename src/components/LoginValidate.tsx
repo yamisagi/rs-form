@@ -1,7 +1,66 @@
 import { useState } from 'react';
 import Modal from './Modal';
+import useInput from '../hooks/useInput';
+///! Her şeyden önce, kodumuzu daha okunabilir hale getirmek için ve tekrar tekrar aynı kodları yazmamak için componentler oluşturabiliriz. Fakat tüm notları bir arada tutmak için bu şekilde yazmam daha mantıklı olacaktır.
+
+// Parçalanabilecek Componentler:
+// 1. Input
+// 2. Button
+// 3. Form
+
+// Örneğin Input componentini şu şekilde oluşturabilirdik;
+
+// const Input = ({
+//   label,
+//   id,
+//   error,
+//   ...props
+//
+// }) => {
+//   return (
+//     <div className='flex flex-col'>
+//       <label htmlFor={id} className='label-form'>
+//         {label}
+//       </label>
+//       <input
+//         id={id}
+//         {...props}
+//       />
+//       {error && (
+//         <p className='text-red-500 text-xs italic mb-2'>
+//           {error}
+//         </p>
+//       )}
+//     </div>
+//   );
+// };
 
 const LoginValidate = () => {
+  {/*
+  //! useInput hook'u ile basit bir şekilde inputlar için validation yapabiliriz.
+  //! Ve validation için ayrı ayrı state'ler oluşturmamıza gerek kalmaz.
+  //! Ayrıca, her input type için özelleştirilmiş validationlar da yapabiliriz. 
+  //------------------------------------------
+  const {
+    value: email,
+    didBlur: emailDidBlur,
+    hasError: emailHasError,
+    onBlur: emailOnBlur,
+    onChange: emailOnChange,
+  } = useInput('', (value) => value.includes('@'));
+
+  const {
+    value: password,
+    didBlur: passwordDidBlur,
+    hasError: passwordHasError,
+    onBlur: passwordOnBlur,
+    onChange: passwordOnChange,
+  } = useInput('', (value) => value.trim() !== ''); 
+
+  //------------------------------------------
+  */
+}
+
   const [open, setOpen] = useState(false);
   const [inputValues, setInputValues] = useState({
     email: '',
@@ -19,16 +78,14 @@ const LoginValidate = () => {
   // Fakat bu yöntemde her keypress'te çalıştığı için performans sorunu olabilir.
   // Ve bu yöntemde error mesajı çok erken gözükebilir. Bu da kullanıcıyı rahatsız edebilir.
 
-
   //! 4. Yöntem
 
-  // HTML5'in kendi validation'ı ile de bu kontrolü yapabiliriz. 
+  // HTML5'in kendi validation'ı ile de bu kontrolü yapabiliriz.
   // inputlar, optionlar, textarea'lar için required attribute'ü ile ekstra bir kontrol yapmamıza gerek kalmayacaktır. Ve tarayıcı tarafından kontrol edilecektir.
   // Örneğin, <input type="email" required /> veya <input type="password" required /> gibi.
-  // Ayrıca HTML5'in kendi validation'ı ile minLength attribute'ü ile de kontrol yapabiliriz. Örneğin, <input type="password" minLength={8} /> gibi. 
-  // Ve iki validation'ı da birlikte kombinleyebiliriz. 
+  // Ayrıca HTML5'in kendi validation'ı ile minLength attribute'ü ile de kontrol yapabiliriz. Örneğin, <input type="password" minLength={8} /> gibi.
+  // Ve iki validation'ı da birlikte kombinleyebiliriz.
   // Örneğin, iki password input'ı biri password, diğeri confirm password için olduğunu düşünelim. Bu durumda kendi validationumuzu yazmamız gerekir çünkü HTML5'in böyle bir validation'ı yoktur.
-
 
   const validateInput = (identifier: string) => {
     // Her keypress'te çalışacak şekilde bir kontrol için bu şekilde bir fonksiyon oluşturup, RegExp ile kontrol edebiliriz.
