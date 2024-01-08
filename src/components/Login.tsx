@@ -46,6 +46,37 @@ const Login = () => {
     username: '',
     password: '',
   });
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    // Bu kısımda da gördüğümüz gibi, form submit edildiğinde
+    // Form submit edildiğinde yapılacak işlemleri burada yapabiliriz.
+    // Örneğin, formu bir API'ye göndermek gibi.
+
+    console.log(inputValues);
+
+    //! Validation işlemleri burada yapılabilir.
+    if (
+      inputValues.username === '' ||
+      inputValues.password === '' ||
+      inputValues.username.length < 3 ||
+      (inputValues.password.length < 3 || !inputValues.username.includes('@'))
+      // Tabii ki bu şekilde bir validation işlemi yapmamalıyız.
+      // Çok amatörce bir validation işlemi, bunun için bir sürü
+      // Validation kütüphanesi var. Formik & Yup gibi.
+      // Ama biz bunu öğrenmek için yapıyoruz.
+    ) {
+      alert('Please fill in the blanks.');
+    } else {
+      // Bu kısımda da gördüğümüz gibi, form submit edildiğinde 
+      // API'ye göndermek için kullanabiliriz.
+      setOpen(true);
+      // Formu submit ettikten sonra inputları sıfırlamak için:
+      setInputValues({
+        username: '',
+        password: '',
+      });
+    }
+  };
 
   const handleOnChange = (e: any) => {
     // onSubmit bizden e: React.FormEvent<HTMLFormElement> istiyor.
@@ -58,46 +89,20 @@ const Login = () => {
     // Bu şekilde TypeScript ile form elemanlarına erişebiliriz kitabına uyarak ama,
     // Biz ne yapağız?  e:any şeklinde yazıp, e.target.name şeklinde yazıp kolayca erişebiliriz 🫶🏻
 
-    //! Validation işlemleri burada yapılabilir.
-    if (
-      inputValues.username === '' ||
-      inputValues.password === '' ||
-      inputValues.username.length < 3 ||
-      (inputValues.password.length < 3 && !inputValues.username.includes('@'))
-      // Tabii ki bu şekilde bir validation işlemi yapmamalıyız.
-      // Çok amatörce bir validation işlemi, bunun için bir sürü
-      // Validation kütüphanesi var. Formik & Yup gibi.
-      // Ama biz bunu öğrenmek için yapıyoruz.
-    ) {
-      alert('Please fill in the blanks.');
-    } else {
-      setInputValues({
-        ...inputValues,
-        [e.target.name]: e.target.value,
-        // Bunu şu şekilde de yapabilirdik:
-        // Bir parametre daha alıp ona göre işlem yapabilirdik.
-        // handleOnChange = (e:any, name:string) gibi ama bu şekilde daha kolay geliyor,
-        // En azından bana öyle geliyor.
-      });
-      setOpen(true);
-    }
+    setInputValues({
+      ...inputValues,
+      [e.target.name]: e.target.value,
+      // Bunu şu şekilde de yapabilirdik:
+      // Bir parametre daha alıp ona göre işlem yapabilirdik.
+      // handleOnChange = (e:any, name:string) gibi ama bu şekilde daha kolay geliyor,
+      // En azından bana öyle geliyor.
+    });
   };
+
   return (
     <>
       <Modal open={open} message='Form submitted.' setOpen={setOpen} />
-      <form
-        className='login-form'
-        onSubmit={(e) => {
-          e.preventDefault();
-          console.log(inputValues);
-          handleOnChange(e);
-          // Formu submit ettikten sonra inputları sıfırlamak için:
-          setInputValues({
-            username: '',
-            password: '',
-          });
-        }}
-      >
+      <form className='login-form' onSubmit={handleSubmit}>
         <div className='flex flex-col items-center justify-center w-50'>
           <h1 className='h1-form'>Login</h1>
           <label htmlFor='username' className='label-form'>
