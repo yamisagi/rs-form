@@ -1,6 +1,8 @@
 import React from 'react';
+import Modal from './Modal';
 
 const ComplexForm = () => {
+  const [open, setOpen] = React.useState(false);
   // Bu kısımda görece olarak daha karmaşık bir form oluşturduk.
   // Ve önceki örnekteki gibi bir submit fonksiyonu oluşturduk.
   // Fakat bu sefer 1-2 adet inputla uğraşmak yerine daha fazla,
@@ -53,6 +55,16 @@ const ComplexForm = () => {
 
     // const form = e.currentTarget;
     // form.reset(); // Formu resetlemek için
+
+    // ************
+
+    // Minik bir validation yapalım.
+
+    if (!data['terms-and-conditions']) {
+      alert('You must accept the terms and conditions.');
+      return;
+    }
+    setOpen(true);
   };
 
   return (
@@ -211,6 +223,11 @@ const ComplexForm = () => {
           </button>
         </div>
       </div>
+      <Modal
+        open={open}
+        message='You have successfully signed up.'
+        setOpen={setOpen}
+      />
     </form>
   );
 };

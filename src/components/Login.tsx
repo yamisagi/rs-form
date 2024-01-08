@@ -98,10 +98,7 @@ const Login = () => {
             value={inputValues.username}
             className='input-form'
           />
-          <label
-            htmlFor='password'
-            className='label-form'
-          >
+          <label htmlFor='password' className='label-form'>
             Password
           </label>
           <input
@@ -117,7 +114,24 @@ const Login = () => {
           <button
             type='submit'
             className='submit-button'
-            onClick={() => setOpen(true)}
+            onClick={() => {
+              // Validation işlemleri burada yapılabilir.
+              if (
+                inputValues.username === '' ||
+                inputValues.password === '' ||
+                inputValues.username.length < 3 ||
+                (inputValues.password.length < 3 &&
+                  !inputValues.username.includes('@'))
+                  // Tabii ki bu şekilde bir validation işlemi yapmamalıyız.
+                  // Çok amatörce bir validation işlemi, bunun için bir sürü
+                  // Validation kütüphanesi var. Formik & Yup gibi.
+                  // Ama biz bunu öğrenmek için yapıyoruz.
+              ) {
+                alert('Please fill in the blanks.');
+              } else {
+                setOpen(true);
+              }
+            }}
           >
             Login
           </button>
