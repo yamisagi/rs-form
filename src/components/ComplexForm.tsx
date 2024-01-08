@@ -46,6 +46,13 @@ const ComplexForm = () => {
     // Bu şekilde form içindeki tüm inputların değerlerini alabiliriz.
     // Multiple inputların aynı name'e sahip olması durumunda da merge edebiliriz.
     //! Bu yöntemde önemli olan nokta, Inputların 'name' attribute'unun olmasıdır. Aksi takdirde FormData API'si ile değerlerini alamayız.
+
+    // ************
+
+    // FormData API'si ile de formu resetlemek mümkün.
+
+    // const form = e.currentTarget;
+    // form.reset(); // Formu resetlemek için
   };
 
   return (
@@ -194,6 +201,11 @@ const ComplexForm = () => {
           <button type='submit' className='submit-button'>
             Submit
           </button>
+          {/* Reset butonu için type='reset' kullanıyoruz. 
+              Tabi ki bu butonu kullanmak yerine, bir butonun type='button' olması ve onClick={handleReset} şeklinde bir fonksiyon yazmak da mümkün.
+              Ayriyeten, FormData API'si ile de formu resetlemek mümkün.
+
+          */}
           <button type='reset' className='reset-button'>
             Reset
           </button>
