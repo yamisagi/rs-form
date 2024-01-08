@@ -58,14 +58,29 @@ const Login = () => {
     // Bu şekilde TypeScript ile form elemanlarına erişebiliriz kitabına uyarak ama,
     // Biz ne yapağız?  e:any şeklinde yazıp, e.target.name şeklinde yazıp kolayca erişebiliriz 🫶🏻
 
-    setInputValues({
-      ...inputValues,
-      [e.target.name]: e.target.value,
-      // Bunu şu şekilde de yapabilirdik:
-      // Bir parametre daha alıp ona göre işlem yapabilirdik.
-      // handleOnChange = (e:any, name:string) gibi ama bu şekilde daha kolay geliyor,
-      // En azından bana öyle geliyor.
-    });
+    //! Validation işlemleri burada yapılabilir.
+    if (
+      inputValues.username === '' ||
+      inputValues.password === '' ||
+      inputValues.username.length < 3 ||
+      (inputValues.password.length < 3 && !inputValues.username.includes('@'))
+      // Tabii ki bu şekilde bir validation işlemi yapmamalıyız.
+      // Çok amatörce bir validation işlemi, bunun için bir sürü
+      // Validation kütüphanesi var. Formik & Yup gibi.
+      // Ama biz bunu öğrenmek için yapıyoruz.
+    ) {
+      alert('Please fill in the blanks.');
+    } else {
+      setInputValues({
+        ...inputValues,
+        [e.target.name]: e.target.value,
+        // Bunu şu şekilde de yapabilirdik:
+        // Bir parametre daha alıp ona göre işlem yapabilirdik.
+        // handleOnChange = (e:any, name:string) gibi ama bu şekilde daha kolay geliyor,
+        // En azından bana öyle geliyor.
+      });
+      setOpen(true);
+    }
   };
   return (
     <>
@@ -111,28 +126,7 @@ const Login = () => {
             value={inputValues.password}
             className='input-form'
           />
-          <button
-            type='submit'
-            className='submit-button'
-            onClick={() => {
-              // Validation işlemleri burada yapılabilir.
-              if (
-                inputValues.username === '' ||
-                inputValues.password === '' ||
-                inputValues.username.length < 3 ||
-                (inputValues.password.length < 3 &&
-                  !inputValues.username.includes('@'))
-                  // Tabii ki bu şekilde bir validation işlemi yapmamalıyız.
-                  // Çok amatörce bir validation işlemi, bunun için bir sürü
-                  // Validation kütüphanesi var. Formik & Yup gibi.
-                  // Ama biz bunu öğrenmek için yapıyoruz.
-              ) {
-                alert('Please fill in the blanks.');
-              } else {
-                setOpen(true);
-              }
-            }}
-          >
+          <button type='submit' className='submit-button'>
             Login
           </button>
         </div>

@@ -2,6 +2,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Login from '../components/Login';
 import App from '../App';
 import ComplexForm from '../components/ComplexForm';
+import LoginValidate from '../components/LoginValidate';
 
 const router = createBrowserRouter([
   {
@@ -15,6 +16,10 @@ const router = createBrowserRouter([
       {
         path: '/complex-form',
         element: <ComplexForm />,
+      },
+      {
+        path: '/login-validate',
+        element: <LoginValidate />,
       },
     ],
   },
