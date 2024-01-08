@@ -22,10 +22,10 @@ const LoginValidate = () => {
   const validateInput = (identifier: string) => {
     // Her keypress'te çalışacak şekilde bir kontrol için bu şekilde bir fonksiyon oluşturup, RegExp ile kontrol edebiliriz.
 
-    // Email Regex için içerisi boşluk olmayan bir karakter, @ işareti, içerisi boşluk olmayan bir karakter, nokta, içerisi boşluk olmayan bir karakter.
+    //? Email Regex için içerisi boşluk olmayan bir karakter, @ işareti, içerisi boşluk olmayan bir karakter, nokta, içerisi boşluk olmayan bir karakter.
     const emailReg = /\S+@\S+\.\S+/;
 
-    // Password Regex için en az 8 karakter, en az bir harf, en az bir sayı ve en az bir özel karakter olmalı.
+    //? Password Regex için en az 8 karakter, en az bir harf, en az bir sayı ve en az bir özel karakter olmalı.
     const passwordReg =
       /^(?=.*[A-Za-z])(?=.*\d)(?=.*[!@#$%^&*()_+{}\[\]:;<>,.?~\\/-])[A-Za-z\d!@#$%^&*()_+{}\[\]:;<>,.?~\\/-]{8,}$/;
 
@@ -39,20 +39,16 @@ const LoginValidate = () => {
     // Ve tek bir fonksiyon ile tüm inputlar için kontrol yapabiliriz.
 
     if (identifier === 'email') {
-      setDidFocus((prev) => {
-        return {
-          ...prev,
-          email: !emailReg.test(inputValues.email),
-        };
-      });
+      setDidFocus((prev) => ({
+        ...prev,
+        email: !emailReg.test(inputValues.email),
+      }));
     }
     if (identifier === 'password') {
-      setDidFocus((prev) => {
-        return {
-          ...prev,
-          password: !passwordReg.test(inputValues.password),
-        };
-      });
+      setDidFocus((prev) => ({
+        ...prev,
+        password: !passwordReg.test(inputValues.password),
+      }));
     }
   };
 
@@ -60,11 +56,46 @@ const LoginValidate = () => {
     e.preventDefault();
     console.log(inputValues);
     // API'ye göndermek için kullanabiliriz.
-    setInputValues({
-      email: '',
-      password: '',
-    });
-    setOpen(true);
+    console.log(didFocus.email, didFocus.password);
+
+    //! 3. Yöntem
+
+    // Bu yöntemde submission kısmında bir kontrol yapabiliriz.
+    // Yukarıdaki yöntemlerdeki gibi onBlur kullanmadan ref veya state ile submit kısmında validation için if kontrolü ile de yapılabilir, fakat bu yöntemde error message çok geç gözükebilir. Bu da kullanıcıyı rahatsız edebilir.
+    // Örneğin, 
+    // if (inputValues.email === '' || inputValues.password === '') {
+    //    Eğer error message için bir state'imiz var ise burda da set edebiliriz.
+    //   alert('Please enter a valid email or password.');
+    //   return; // Sonraki işlemleri yapmaması için return koyabiliriz.
+    // } 
+    // API'ye işlemleri vs. 
+    // Error message için bir state'imiz var ise burda da eski haline döndürebiliriz.
+
+
+
+    //* 2. Yöntemin devamı;
+
+    // Validation yapsak da yapmasak da, kullanıcı submit ettiğinde istek atılacaktır.
+    // Bu yüzden burda bir kontrol yapmak mantıklı olacaktır.
+    //! **********
+    // Burda inputValues kısmını kontrol etmemizin mantıksal sebebi ise,
+    // Başlangıçta didFocus.email ve didFocus.password false olarak tanımlı olduğu için, kullanıcı inputa hiçbir şey yazmadan submit ederse, form yine de submit olacaktır.
+    // Bu da bizim istemediğimiz bir durumdur.
+
+    if (
+      inputValues.email !== '' &&
+      !didFocus.email &&
+      inputValues.password !== '' &&
+      !didFocus.password
+    ) {
+      setInputValues({
+        email: '',
+        password: '',
+      });
+      setOpen(true);
+    } else {
+      alert('Please enter a valid email or password.');
+    }
   };
 
   const handleOnChange = (e: any) => {
